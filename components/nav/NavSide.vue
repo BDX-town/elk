@@ -6,7 +6,7 @@ const { command } = defineProps<{
 }>()
 const { notifications } = useNotifications()
 const lastAccessedNotificationRoute = useLocalStorage(STORAGE_KEY_LAST_ACCESSED_NOTIFICATION_ROUTE, '')
-const noUserVisual = computed(() => !isHydrated.value && currentUser.value)
+const noUserVisual = computed(() => isHydrated.value && currentUser.value)
 
 const notificationsLink = computed(() => {
   const hydrated = isHydrated.value

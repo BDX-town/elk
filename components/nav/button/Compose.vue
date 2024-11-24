@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const noUserVisual = computed(() => !isHydrated.value && currentUser.value)
+const noUserVisual = computed(() => isHydrated.value && currentUser.value)
 </script>
 
 <template>

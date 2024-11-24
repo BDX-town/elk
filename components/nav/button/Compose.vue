@@ -1,8 +1,10 @@
 <script setup lang="ts">
+const noUserVisual = computed(() => !isHydrated.value && currentUser.value)
 </script>
 
 <template>
   <NuxtLink
+    v-if="noUserVisual"
     to="/compose"
     :aria-label="$t('action.compose')"
     fixed

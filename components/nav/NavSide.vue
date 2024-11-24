@@ -6,6 +6,7 @@ const { command } = defineProps<{
 }>()
 const { notifications } = useNotifications()
 const lastAccessedNotificationRoute = useLocalStorage(STORAGE_KEY_LAST_ACCESSED_NOTIFICATION_ROUTE, '')
+const noUserVisual = computed(() => !isHydrated.value && currentUser.value)
 
 const notificationsLink = computed(() => {
   const hydrated = isHydrated.value
@@ -49,6 +50,7 @@ function composeNavigate() {
     <NavSideItem :text="$t('nav.settings')" to="/settings" icon="i-ri:settings-3-line" :command="command" />
     <div flex-auto />
     <button
+      v-if="noUserVisual"
       p3
       mb4
       rounded-xl

@@ -177,11 +177,14 @@ const isDM = computed(() => draft.value.params.visibility === 'direct')
 
 const quote = ref<akkoma.v1.Status | undefined>(undefined)
 
-onMounted(async () => {
-  if (draft.value.params.quoteId && !quote.value) {
-    quote.value = await fetchStatus(draft.value.params.quoteId)
-  }
-})
+async function fetchQuote(quoteId: string | undefined | null) {
+  if (quoteId)
+    quote.value = await fetchStatus(quoteId)
+}
+
+watch(draft, newDraft => fetchQuote(newDraft.params.quoteId))
+
+onMounted(() => fetchQuote(draft.value.params.quoteId))
 
 async function handlePaste(evt: ClipboardEvent) {
   const files = evt.clipboardData?.files

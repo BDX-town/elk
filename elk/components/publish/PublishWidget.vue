@@ -175,6 +175,14 @@ const postLanguageDisplay = computed(() => languagesNameList.find(i => i.code ==
 
 const isDM = computed(() => draft.value.params.visibility === 'direct')
 
+const quote = ref<akkoma.v1.Status | undefined>(undefined)
+
+onMounted(async () => {
+  if (draft.value.params.quoteId && !quote.value) {
+    quote.value = await fetchStatus(draft.value.params.quoteId)
+  }
+})
+
 async function handlePaste(evt: ClipboardEvent) {
   const files = evt.clipboardData?.files
   if (!files || files.length === 0)
@@ -309,6 +317,10 @@ function stopQuestionMarkPropagation(e: KeyboardEvent) {
                 @keydown="stopQuestionMarkPropagation"
                 @keydown.esc.prevent="editor?.commands.blur()"
               />
+            </div>
+
+            <div v-if="draft.params.quoteId" p-1>
+              <PublishQuote :quote="quote" />
             </div>
 
             <div v-if="isUploading" flex gap-1 items-center text-sm p1 text-primary>

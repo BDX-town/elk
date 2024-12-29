@@ -177,9 +177,15 @@ const isDM = computed(() => draft.value.params.visibility === 'direct')
 
 const quote = ref<akkoma.v1.Status | undefined>(undefined)
 
+function removeQuote() {
+  draft.value.params.quoteId = undefined
+}
+
 async function fetchQuote(quoteId: string | undefined | null) {
   if (quoteId)
     quote.value = await fetchStatus(quoteId)
+  else
+    quote.value = undefined
 }
 
 watch(draft, newDraft => fetchQuote(newDraft.params.quoteId))
@@ -323,7 +329,7 @@ function stopQuestionMarkPropagation(e: KeyboardEvent) {
             </div>
 
             <div v-if="draft.params.quoteId" p-1>
-              <PublishQuote :quote="quote" />
+              <PublishQuote :quote="quote" @remove="removeQuote" />
             </div>
 
             <div v-if="isUploading" flex gap-1 items-center text-sm p1 text-primary>

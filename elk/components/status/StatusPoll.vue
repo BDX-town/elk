@@ -6,6 +6,8 @@ const { status } = defineProps<{
 }>()
 const poll = reactive({ ...status.poll! })
 
+console.log(poll)
+
 function toPercentage(num: number) {
   const percentage = 100 * num
   return `${percentage.toFixed(1).replace(/\.?0+$/, '')}%`

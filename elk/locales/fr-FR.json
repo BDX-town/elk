@@ -273,6 +273,7 @@
     "aria_label_close": "Fermer"
   },
   "nav": {
+    "admin": "Administration",
     "back": "Retourner à la page précédente",
     "blocked_domains": "Domaines bloqués",
     "blocked_users": "Comptes bloqués",

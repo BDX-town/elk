@@ -304,6 +304,7 @@
     "aria_label_close": "Close"
   },
   "nav": {
+    "admin": "Administration",
     "back": "Go back",
     "blocked_domains": "Blocked domains",
     "blocked_users": "Blocked users",

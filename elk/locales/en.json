@@ -88,6 +88,10 @@
     "switch_account": "Switch account",
     "vote": "Vote"
   },
+  "admin": {
+    "add_link": "Add link",
+    "loading": "Loading..."
+  },
   "app_desc_short": "A nimble Akkoma web client",
   "app_logo": "Elk Logo",
   "app_name": "Elk",

@@ -80,6 +80,10 @@
     "switch_account": "Changer de compte",
     "vote": "Voter"
   },
+  "admin": {
+    "add_link": "Ajouter",
+    "loading": "Sauvegarde..."
+  },
   "app_desc_short": "Un client Mastodon fait avec 🧡",
   "app_logo": "Logo Elk",
   "app_name": "Elk",

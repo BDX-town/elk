@@ -81,8 +81,13 @@
     "vote": "Voter"
   },
   "admin": {
-    "add_link": "Ajouter",
-    "loading": "Sauvegarde..."
+    "links": {
+      "add": "Ajouter",
+      "description": "Vous pouvez ajouter des liens à afficher aux utilisateurs de cette interface",
+      "label": "Label",
+      "title": "Raccourcis",
+      "url": "URL"
+    }
   },
   "app_desc_short": "Un client Mastodon fait avec 🧡",
   "app_logo": "Logo Elk",

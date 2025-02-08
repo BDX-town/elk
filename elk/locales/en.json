@@ -89,8 +89,13 @@
     "vote": "Vote"
   },
   "admin": {
-    "add_link": "Add link",
-    "loading": "Loading..."
+    "links": {
+      "add": "Add link",
+      "description": "You can enter links to display to the users of this interface.",
+      "label": "Label",
+      "title": "Links",
+      "url": "URL"
+    }
   },
   "app_desc_short": "A nimble Akkoma web client",
   "app_logo": "Elk Logo",

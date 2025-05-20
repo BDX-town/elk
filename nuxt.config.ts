@@ -1,4 +1,4 @@
-import type { BuildInfo } from './types'
+import type { BuildInfo } from './shared/types'
 import { createResolver, useNuxt } from '@nuxt/kit'
 import { isCI, isDevelopment, isWindows } from 'std-env'
 import { isPreview } from './config/env'
@@ -9,9 +9,16 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-09-11',
+  future: {
+    compatibilityVersion: 4,
+  },
   typescript: {
     tsConfig: {
       exclude: ['../service-worker'],
+      compilerOptions: {
+        // TODO: enable this once we fix the issues
+        noUncheckedIndexedAccess: false,
+      },
       vueCompilerOptions: {
         target: 3.5,
       },
@@ -27,11 +34,11 @@ export default defineNuxtConfig({
     '@unlazy/nuxt',
     '@nuxt/test-utils/module',
     ...(isDevelopment || isWindows) ? [] : ['nuxt-security'],
-    '~/modules/emoji-mart-translation',
-    '~/modules/purge-comments',
-    '~/modules/build-env',
-    '~/modules/tauri/index',
-    '~/modules/pwa/index', // change to '@vite-pwa/nuxt' once released and remove pwa module
+    '~~/modules/emoji-mart-translation',
+    '~~/modules/purge-comments',
+    '~~/modules/build-env',
+    '~~/modules/tauri/index',
+    '~~/modules/pwa/index', // change to '@vite-pwa/nuxt' once released and remove pwa module
     'stale-dep/nuxt',
   ],
   vue: {
@@ -313,7 +320,10 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
     langDir: 'locales',
     defaultLocale: 'en-US',
-    vueI18n: './config/i18n.config.ts',
+    experimental: {
+      generatedLocaleFilePathFormat: 'relative',
+    },
+    vueI18n: '../config/i18n.config.ts',
     bundle: {
       optimizeTranslationDirective: false,
     },
